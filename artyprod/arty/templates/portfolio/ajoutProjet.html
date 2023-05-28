@@ -1,0 +1,40 @@
+{% extends 'a.html' %}
+
+{% block content %}
+<br/><br/><br/><br/>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Ajout de projet</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="nom">Nom du projet</label>
+              {{ form.nom }}
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              {{ form.description }}
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              {{ form.image }}
+            </div>
+            <div class="form-group">
+              <label for="temoignage">Témoignage</label>
+              {{ form.temoignage }}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

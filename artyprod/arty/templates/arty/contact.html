@@ -1,0 +1,67 @@
+{% extends 'a.html' %}
+
+{% block content %}
+    <br/>
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Contact Us</h2>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %} 
+                            <table class="table"> 
+                                <tr>
+                                  <th>Nom </th>
+                                  <td>{{ form.name }}</td>
+                                </tr>
+                                <tr>
+                                  <th>Email </th>
+                                  <td>{{ form.email }}</td>
+                                </tr>
+                                <tr>
+                                  <th>Téléphone </th>
+                                  <td>{{ form.phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Message </th>
+                                    <td>{{ form.message }}</td>
+                                  </tr>
+                              
+                            </table>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                          </form>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block styles %}
+
+<style>
+.card {
+  border-radius: 20px;
+}
+
+.card-header {
+  border-radius: 20px 20px 0 0;
+}
+
+.table th {
+  background-color: #3366ff;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #3366ff;
+  border-color: #3366ff;
+}
+
+.btn-primary:hover {
+  background-color: #2044b7;
+  border-color: #2044b7;
+}
+</style>
+{% endblock %}
+

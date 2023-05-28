@@ -1,0 +1,17 @@
+{% extends 'a.html' %}
+
+{% block content %}
+<br/><br/><br/><br/><br/><br/>
+<div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+  <h1>Modifier l'Equipe </h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+  </form>
+</div>
+</div>
+</div>
+{% endblock %}

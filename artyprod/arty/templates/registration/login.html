@@ -1,0 +1,35 @@
+{%extends "a.html" %}
+{% block content %}
+<br/><br/><br/><br/><br/><br/><br/>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <h2 class="text-center mb-4">Se connecter</h2>
+        <form method="post" class="needs-validation" novalidate>
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+          {% endif %}
+          <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+            {{ form.username }}
+            <div class="invalid-feedback">{{ form.username.errors.as_text }}</div>
+          </div>
+          <br/>
+          <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+            {{ form.password }}
+            <div class="invalid-feedback">{{ form.password.errors.as_text }}</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt-4">Se connecter</button>
+        </form>
+        <hr>
+        <p class="text-center">Pas encore inscrit.e ? <a href="{% url 'register' %}">S'inscrire</a></p>
+        <p class="text-center"><a href="#">Mot de passe oublié ?</a></p>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

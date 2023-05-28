@@ -1,0 +1,22 @@
+{% extends 'a.html' %}
+
+{% block content %}
+  <br/><br/><br/><br/><br/><br/>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="mb-0">{{ equipe.nom }}</h2>
+            <hr>
+            
+            <p>{{ equipe.description }}</p>
+            <p>Personnel : {{ equipe.personnel }}</p>
+            <a href="{% url 'modifierEquipe' equipe.id %}" class="btn btn-primary mr-2">Modifier</a>
+            <a href="{% url 'supprimerEquipe' equipe.id %}" class="btn btn-danger">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'a.html' %}
+
+{% block content %}
+<br/><br/><br/><br/><br/>
+<div class="container">
+  
+  <div class="row">
+    
+      <div class="col-md-4">
+        <h1>Ajouter une équipe</h1>
+        <form method="POST">
+          {% csrf_token %} 
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Nom </th>
+                <td>{{ form.nom }}</td>
+              </tr>
+              <tr>
+                <th>Description </th>
+                <td>{{ form.description }}</td>
+              </tr>
+              <tr>
+                <th>Membres </th>
+                <td>
+                  <select name="membres" id="membres" class="form-control">
+                    {% for membre in membres %}
+                      <option value="{{ membre.id }}">{{ membre.nom }}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+  </div>
+</div>
+<br/>
+
+{% endblock %}

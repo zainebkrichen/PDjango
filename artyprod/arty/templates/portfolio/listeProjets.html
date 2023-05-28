@@ -1,0 +1,34 @@
+{% extends 'a.html' %}
+
+{% block content %}
+  <br/><br/><br/><br/><br/><br/>
+   <h2>Liste des projets</h2>
+   <a href="{% url 'ajoutProjet' %}" class="btn btn-primary">Ajouter un projet</a>
+
+  {% if projets %}
+    <div class="row">
+      {% for projet in projets %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            
+            <img src="{{ projet.image.url }}" class="card-img-top" height="200px" alt="{{ projet.nom }}" >
+            <div class="card-body">
+              <h3 class="card-title">{{ projet.nom }}</h3>
+              <p class="card-text ">{{ projet.description|truncatechars:100 }}</p>
+              <p class="card-text ">{{ projet.temoignage|truncatechars:100 }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'modifierProjet' projet.id %}" class="btn btn-sm btn-outline-secondary">Modifier</a>
+                  <a href="{% url 'supprimerProjet' projet.id %}" class="btn btn-sm btn-outline-secondary">Supprimer</a>
+                  <a href="{% url 'detail_projet' projet.id %}" class="btn btn-sm btn-outline-secondary">Detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Aucun projet n'a été ajouté pour le moment.</p>
+  {% endif %}
+{% endblock %}
